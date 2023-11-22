@@ -11,7 +11,7 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 
-<body class="bg-dark">
+<body>
 
     <div class="container mt-5">
         <h1 class="text-white mb-3">Lista di tutte le auto disponibili</h1>
@@ -20,6 +20,26 @@
         </div>
         <div class="row cars-filter">
 
+        </div>
+        <div class="form-container text-center">
+            <h2 class="text-center mt-5 mb-3">Aggiungi una nuova auto</h2>
+            <form class="row g-3 justify-content-center" data-bitwarden-watching="1" onsubmit="addCar(event)">
+                <div class="col-md-3 my-4">
+                    <label for="brand" class="form-label">Marca</label>
+                    <input type="text" class="form-control" id="brand" placeholder="Fiat">
+                </div>
+                <div class="col-md-3 my-4">
+                    <label for="model" class="form-label">Modello</label>
+                    <input type="text" class="form-control" id="model" placeholder="Grande Punto">
+                </div>
+                <div class="col-md-3 my-4">
+                    <label for="supply" class="form-label">Alimentazione</label>
+                    <input type="number" class="form-control" id="supply" placeholder="Benzina">
+                </div>
+                <div class="col-12 mb-5">
+                    <button type="submit" class="btn btn-primary">Aggiungi</button>
+                </div>
+            </form>
         </div>
     </div>
 

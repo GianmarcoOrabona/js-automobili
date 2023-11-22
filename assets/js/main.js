@@ -84,7 +84,7 @@ function carTableGenerator(array) {
 
     // Creo una table dove inserire dinamicamente le auto
     let table = `
-<table class="table table-striped table-dark">
+<table class="table table-striped">
     <thead>
         <tr>
             <th scope="col">#</th>
@@ -126,7 +126,7 @@ function carTableFiltered(array, type) {
     let table = `
     <div class="col-4">
         ${h1}
-        <table class="table table-striped table-dark">
+        <table class="table table-striped">
             <thead>
                 <tr>
                     <th scope="col">#</th>
