@@ -34,6 +34,7 @@ cars.forEach(function (car) {
     } else {
         otherCars.push(car);
     }
+
 });
 
 // Stampo in console gli array creati
@@ -49,3 +50,21 @@ console.log(dieselCars);
 /* Macchine con altra alimentazione */
 console.log('Macchine con altra alimentazione');
 console.log(otherCars);
+
+
+// Stampo a schermo la lista delle automobili
+
+let liCars = "";
+cars.forEach(function (car) {
+    liCars += `<li class="list-group-item">Marca: ${car.marca} | Modello: ${car.modello} | Alimentazione: ${car.alimentazione}</li>`;
+});
+
+let list = `
+<ul class="list-group">
+    ${liCars}
+</ul>
+`
+
+document.querySelector('.cars-container').innerHTML += list
+
+
