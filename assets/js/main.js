@@ -62,7 +62,7 @@ carTableFiltered(gasolineCars, 'benzina');
 carTableFiltered(dieselCars, 'diesel');
 carTableFiltered(otherCars, 'altro');
 
-/* -------------- FUNCTIONS -------------- */
+/* ------------- FUNCTIONS ------------- */
 
 function carTableGenerator(array) {
     // Mi creo un elemento <tr> da inserire dinamicamente nel DOM
