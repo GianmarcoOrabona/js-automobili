@@ -54,17 +54,41 @@ console.log(otherCars);
 
 // Stampo a schermo la lista delle automobili
 
-let liCars = "";
-cars.forEach(function (car) {
-    liCars += `<li class="list-group-item">Marca: ${car.marca} | Modello: ${car.modello} | Alimentazione: ${car.alimentazione}</li>`;
+// Mi creo un elemento <tr> da inserire dinamicamente nel DOM
+let trCars = "";
+
+// Con un ciclo forEach() creo i <tr> che mi servono
+cars.forEach(function (car, index) {
+    trCars += `
+    <tr>
+      <th scope="row">${index + 1}</th>
+        <td>${car.marca}</td>
+        <td>${car.modello}</td>
+        <td>${car.alimentazione}</td>
+    </tr>
+    `;
+
+
 });
 
-let list = `
-<ul class="list-group">
-    ${liCars}
-</ul>
-`
+// Creo una table dove inserire dinamicamente le auto
+let table = `
+<table class="table table-striped table-dark">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Marca</th>
+            <th scope="col">Modello</th>
+            <th scope="col">Alimentazione</th>
+        </tr>
+    </thead>
+    <tbody>
+        ${trCars}
+    </tbody>
+</table>
+`;
 
-document.querySelector('.cars-container').innerHTML += list
+// Inietto il contenuto nell'HTML
+document.querySelector('.cars-container').innerHTML += table;
 
 
