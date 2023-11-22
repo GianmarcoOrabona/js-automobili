@@ -54,12 +54,23 @@ console.log(otherCars);
 
 // Stampo a schermo la lista delle automobili
 
-// Mi creo un elemento <tr> da inserire dinamicamente nel DOM
-let trCars = "";
+// Invoco la funzione per generare la tabella principale
+carTableGenerator(cars);
 
-// Con un ciclo forEach() creo i <tr> che mi servono
-cars.forEach(function (car, index) {
-    trCars += `
+// Invoco la funzione per generare le tabelle
+carTableFiltered(gasolineCars, 'benzina');
+carTableFiltered(dieselCars, 'diesel');
+carTableFiltered(otherCars, 'altro');
+
+/* -------------- FUNCTIONS -------------- */
+
+function carTableGenerator(array) {
+    // Mi creo un elemento <tr> da inserire dinamicamente nel DOM
+    let tr = "";
+
+    // Con un ciclo forEach() creo i <tr> che mi servono
+    array.forEach(function (car, index) {
+        tr += `
     <tr>
       <th scope="row">${index + 1}</th>
         <td>${car.marca}</td>
@@ -69,10 +80,10 @@ cars.forEach(function (car, index) {
     `;
 
 
-});
+    });
 
-// Creo una table dove inserire dinamicamente le auto
-let table = `
+    // Creo una table dove inserire dinamicamente le auto
+    let table = `
 <table class="table table-striped table-dark">
     <thead>
         <tr>
@@ -83,12 +94,53 @@ let table = `
         </tr>
     </thead>
     <tbody>
-        ${trCars}
+        ${tr}
     </tbody>
 </table>
 `;
 
-// Inietto il contenuto nell'HTML
-document.querySelector('.cars-container').innerHTML += table;
+    document.querySelector('.cars-container').innerHTML += table;
+};
 
+// Funzione che mi permette di generare una tabella in base al tipo di alimentazione
+function carTableFiltered(array, type) {
+    let tr = "";
+    let h1 = "";
+    array.forEach(function (car, index) {
+        tr += `
+        <div class="col-4">
+        <tr>
+          <th scope="row">${index + 1}</th>
+            <td>${car.marca}</td>
+            <td>${car.modello}</td>
+            <td>${car.alimentazione}</td>
+        </tr>
+        </div>
+        `;
+    });
+    if (type == 'altro') {
+        h1 += `<h1 class="text-white mt-5 mb-3">Altre Auto</h1>`
+    } else {
+        h1 += `<h1 class="text-white mt-5 mb-3">Auto a ${type}</h1>`
+    }
+    let table = `
+    <div class="col-4">
+        ${h1}
+        <table class="table table-striped table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Modello</th>
+                    <th scope="col">Alimentazione</th>
+                </tr>
+            </thead>
+            <tbody>
+                ${tr}
+            </tbody>
+        </table>
+    </div>
+    `;
 
+    document.querySelector('.cars-filter').innerHTML += table;
+};
